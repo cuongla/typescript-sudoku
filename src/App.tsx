@@ -2,10 +2,10 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // styles
-import { GlobalStyles, theme } from './styles';
+import { GlobalStyles, theme } from 'styles';
 
 // components
-import { Card, Content, Grid, Title } from './components'
+import { Card, Content, Grid, Title } from 'components'
 
 
 const App = () => {
