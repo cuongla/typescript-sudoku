@@ -9,4 +9,4 @@ function shuffle(array: any[]) {
     }
 }
 
-export default shuffle
+export default shuffle;

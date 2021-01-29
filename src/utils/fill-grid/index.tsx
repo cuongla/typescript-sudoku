@@ -1,17 +1,12 @@
 import { IGrid, NUMBERS } from 'typings';
 import shuffle from '../shuffle';
-
-const grid: IGrid = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0]
-]
+import {
+    isInCol,
+    isInRow,
+    isInSquare,
+    identifySquare,
+    checkGrid
+} from 'utils';
 
 // declare numbers
 const numbers: NUMBERS[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -32,8 +27,19 @@ function fillGrid(grid: IGrid) {
 
         if (grid[row][col] === 0) {
             shuffle(numbers)
-            // Do stuff
-            // recursive things
+
+            for (let value of numbers) {
+                if (!isInRow({ grid, row, value }))
+                    if (!isInCol({ col, grid, value })) {
+                        const square = identifySquare({ col, grid, row })
+                        if (!isInSquare({ square, value })) {
+                            grid[row][col] = value
+                            if (checkGrid(grid)) return true
+                            else if (fillGrid(grid)) return true
+                        }
+                    }
+            }
+
             break
         }
     }
