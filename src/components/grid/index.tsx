@@ -4,10 +4,10 @@ import useMousetrap from 'react-hook-mousetrap'
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction, Dispatch } from 'redux';
-import { createGrid, IReducer, selectBlock } from 'reducers';
+import { createGrid, IReducer, selectBlock, fillBlock } from 'reducers';
 
 // types
-import { IBlock_Coords, INDEX } from 'typings';
+import { IBlock_Coords, INDEX, N, NUMBERS } from 'typings';
 
 // components
 import Block from './block'
@@ -16,18 +16,34 @@ import Block from './block'
 import { Container, Row } from './styles'
 
 interface IGridState {
-  selectedBlock?: IBlock_Coords
+  selectedBlock?: IBlock_Coords,
+  selectedValue: N
 }
 
 const Grid: FC = () => {
-  const state = useSelector<IReducer, IGridState>(({ selectedBlock }) => ({
-    selectedBlock,
-  }))
+  const state = useSelector<IReducer, IGridState>(
+    ({ selectedBlock, workingGrid }) => ({
+      selectedBlock,
+      selectedValue:
+        workingGrid && selectedBlock
+          ? workingGrid[selectedBlock[0]][selectedBlock[1]]
+          : 0,
+    })
+  )
   const dispatch = useDispatch<Dispatch<AnyAction>>()
   const create = useCallback(() => dispatch(createGrid()), [dispatch])
   useEffect(() => {
     create()
-  }, [create])
+  }, [create]);
+
+  // fill all grids
+  const fill = useCallback(
+    (n: NUMBERS) => {
+      if (state.selectedBlock && state.selectedValue === 0)
+        dispatch(fillBlock(n, state.selectedBlock))
+    },
+    [dispatch, state.selectedBlock, state.selectedValue]
+  )
 
   // control blocks move with key up/down/left/right
   function moveDown() {
@@ -75,6 +91,15 @@ const Grid: FC = () => {
   useMousetrap('left', moveLeft)
   useMousetrap('right', moveRight)
   useMousetrap('up', moveUp)
+  useMousetrap('1', () => fill(1))
+  useMousetrap('2', () => fill(2))
+  useMousetrap('3', () => fill(3))
+  useMousetrap('4', () => fill(4))
+  useMousetrap('5', () => fill(5))
+  useMousetrap('6', () => fill(6))
+  useMousetrap('7', () => fill(7))
+  useMousetrap('8', () => fill(8))
+  useMousetrap('9', () => fill(9))
 
   return (
     <Container data-cy="grid-container">

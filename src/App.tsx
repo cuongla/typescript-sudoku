@@ -13,7 +13,10 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <Content data-cy="content">
-                <Title data-cy="title">Sudoku</Title>
+                <Title data-cy="title">Sudoku Game</Title>
+                <small style={{ color: 'red', textAlign: 'center' }}>*Please use keys 1-9 to input number inside the block</small>
+                <br />
+                <br />
                 <Card data-cy="card">
                     <Grid />
                 </Card>
