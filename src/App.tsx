@@ -12,6 +12,7 @@ import { Card } from 'components/styles/Card.styles';
 import Grid from 'components/grid/Grid';
 import Numbers from 'components/numbers';
 import NewGame from 'components/new-game/NewGame';
+import Message from 'components/message/Message';
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
                 <br />
                 <Card data-cy="card">
                     <NewGame />
+                    <Message />
                     <Grid />
                     <Numbers />
                 </Card>

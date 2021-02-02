@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { useDispatch } from 'react-redux';
+import { Action, Dispatch } from 'redux';
 
 // reducer
 import { createGrid } from 'reducers';

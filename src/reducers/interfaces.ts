@@ -5,5 +5,6 @@ export interface IReducer {
     selectedBlock?: IBlock_Coords
     solvedGrid?: IGrid
     workingGrid?: IGrid
+    message?: string
 }
 
