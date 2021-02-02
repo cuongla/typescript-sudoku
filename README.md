@@ -42,7 +42,7 @@ I use _Jest_ library for my unit testing. _Jest_ is a JavaScript testing framewo
 
 To start thet test, run **npm run test**
 
-Here is a code exmaple of a test:
+Here is a code example of a test:
 
 ```
 describe('shuffle', () => {
