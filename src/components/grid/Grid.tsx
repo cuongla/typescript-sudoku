@@ -7,7 +7,7 @@ import { AnyAction, Dispatch } from 'redux';
 import { createGrid, IReducer, selectBlock, fillBlock } from 'reducers';
 
 // types
-import { IBlock_Coords, INDEX, N, NUMBERS } from 'typings';
+import { IBlock_Coords, IGrid, INDEX, N, NUMBERS } from 'typings';
 
 // components
 import Block from './block/Block'
@@ -16,25 +16,29 @@ import Block from './block/Block'
 import { Container, Row } from './Grid.styles';
 
 interface IGridState {
-    selectedBlock?: IBlock_Coords,
+    selectedBlock?: IBlock_Coords
     selectedValue: N
+    solvedGrid?: IGrid
 }
 
 const Grid: FC = () => {
     const state = useSelector<IReducer, IGridState>(
-        ({ selectedBlock, workingGrid }) => ({
+        ({ selectedBlock, solvedGrid, workingGrid }) => ({
             selectedBlock,
             selectedValue:
                 workingGrid && selectedBlock
                     ? workingGrid[selectedBlock[0]][selectedBlock[1]]
                     : 0,
+            solvedGrid,
         })
     )
     const dispatch = useDispatch<Dispatch<AnyAction>>()
     const create = useCallback(() => dispatch(createGrid()), [dispatch])
+
+    // create grid
     useEffect(() => {
-        create()
-    }, [create]);
+        if (!state.solvedGrid) create()
+    }, [create, state.solvedGrid]);
 
     // fill all grids
     const fill = useCallback(

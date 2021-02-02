@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
 
 interface IProps {
-    active?: boolean
-    puzzle?: boolean
+  active?: boolean
+  puzzle?: boolean
 }
 
 export const Container = styled.div<IProps>`
   ${({ active, theme, puzzle }) => css`
     align-items: center;
-    background-color: ${active ? theme.colors.blue : theme.colors.white};
+    background-color: ${active ? theme.colors.orange : theme.colors.white};
     border: solid 1px ${theme.colors.black};
     cursor: pointer;
     display: flex;
@@ -17,6 +17,7 @@ export const Container = styled.div<IProps>`
     flex-basis: 0;
     font-size: 20px;
     font-weight: ${puzzle ? 'bold' : 'normal'};
+    color: ${puzzle ? 'black' : '#cf5c36'} !important;
     height: auto;
     justify-content: center;
     transition: ${theme.transition};
@@ -29,7 +30,7 @@ export const Container = styled.div<IProps>`
     }
 
     &:hover {
-      background-color: ${theme.colors.lightBlue};
+      background-color: ${theme.colors.lightOrange};
     }
   `}
 `

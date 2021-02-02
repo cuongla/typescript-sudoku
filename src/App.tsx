@@ -11,6 +11,7 @@ import { Card } from 'components/styles/Card.styles';
 // components
 import Grid from 'components/grid/Grid';
 import Numbers from 'components/numbers';
+import NewGame from 'components/new-game/NewGame';
 
 
 
@@ -20,10 +21,12 @@ const App = () => {
             <GlobalStyles />
             <Content data-cy="content">
                 <Title data-cy="title">Sudoku Game</Title>
-                <small style={{ color: 'red', textAlign: 'center' }}>*Please use keys 1-9 to input number inside the block</small>
+                <small style={{ color: 'red', textAlign: 'center' }}>*Use keys 1-9 on keyboards or</small>
+                <small style={{ color: 'red', textAlign: 'center', marginTop: '5px' }}>buttons below to input number inside the block.</small>
                 <br />
                 <br />
                 <Card data-cy="card">
+                    <NewGame />
                     <Grid />
                     <Numbers />
                 </Card>
