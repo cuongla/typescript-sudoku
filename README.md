@@ -2,7 +2,7 @@
 
 > A sudoku game application works on both website and mobile web app.
 
-![Demo Images](https://i.imgur.com/k2hj8h5.png)
+![Demo Images](https://i.imgur.com/K2hj8H5.png)
 
 ## Table of contents
 
@@ -28,7 +28,7 @@ The project is a practice of using styled-components, wrting typescript and unit
 
 ## Setup
 
-\*You can either use **npm** or **yarn**
+You can either use **npm** or **yarn**
 
 1. Download the project through https://github.com/tinla94/typescript-sudoku
 
@@ -43,7 +43,8 @@ I use _Jest_ library for my unit testing. _Jest_ is a JavaScript testing framewo
 To start thet test, run **npm run test**
 
 Here is a code exmaple of a test:
-`
+
+```
 describe('shuffle', () => {
 it('should be an array with same length after being shuffle', () => {
 const array = [1, 2, 3];
@@ -60,7 +61,7 @@ expect(array).toHaveLength(3);
     })
 
 })
-`
+```
 
 ## Status
 
